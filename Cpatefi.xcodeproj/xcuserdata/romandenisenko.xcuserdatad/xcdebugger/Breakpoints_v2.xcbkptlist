@@ -7,17 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C67B114A-FC26-423A-9D67-3ABA75582E8F"
+            uuid = "321091F6-54FE-4740-88A6-62C3A1057B14"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cpatefi/Controllers/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "playMusic(_:)"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "updateTrackInfo()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "321091F6-54FE-4740-88A6-62C3A1057B14 - 4eac730871d0bdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cpatefi.ViewController.updateTrackInfo() -&gt; ()"
+                  moduleName = "Cpatefi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/romandenisenko/TMS/Cpatefi/Cpatefi/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "4848">
+               </Location>
+               <Location
+                  uuid = "321091F6-54FE-4740-88A6-62C3A1057B14 - 4eac730871d0bdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cpatefi.ViewController.updateTrackInfo() -&gt; ()"
+                  moduleName = "Cpatefi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/romandenisenko/TMS/Cpatefi/Cpatefi/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "4876">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
