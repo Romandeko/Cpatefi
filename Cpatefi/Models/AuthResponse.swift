@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct AuthResponse : Codable{
     let access_token : String
     let expires_in : Int

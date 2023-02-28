@@ -8,7 +8,8 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    
+    // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,10 +36,7 @@ class TabBarController: UITabBarController {
         nav1.navigationBar.prefersLargeTitles = true
         nav2.navigationBar.prefersLargeTitles = true
         nav3.navigationBar.prefersLargeTitles = true
+        
         setViewControllers([nav1,nav2,nav3], animated: true)
     }
-    
-
-    
-
 }

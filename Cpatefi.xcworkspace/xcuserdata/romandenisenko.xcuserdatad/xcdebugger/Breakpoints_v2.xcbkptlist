@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F4870090-444E-4F7A-8045-07F30418A02D"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61DCBB9C-ACD6-47AC-A9AE-C5064E4CF88D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cpatefi/Controllers/Main/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A56EEAD-9C60-4337-B2D5-DE9D071797BC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cpatefi/Controllers/Not main)/PlaylistViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7A1E328-568B-4F3F-BAC1-A33DAD086C9D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cpatefi/Presenters/PlaybackPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "startPlayback(from:tracks:index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ADAF3D16-E80D-4239-8EEC-3280FEC3435D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cpatefi/Presenters/PlaybackPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "startPlayback(from:tracks:index:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ADAF3D16-E80D-4239-8EEC-3280FEC3435D - d8e75d353ef21eb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cpatefi.PlaybackPresenter.startPlayback(from: __C.UIViewController, track: Cpatefi.AudioTrack) -&gt; ()"
+                  moduleName = "Cpatefi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/romandenisenko/Documents/Cpatefi/Cpatefi/Presenters/PlaybackPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "644">
+               </Location>
+               <Location
+                  uuid = "ADAF3D16-E80D-4239-8EEC-3280FEC3435D - d8e75d353ef21eb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cpatefi.PlaybackPresenter.startPlayback(from: __C.UIViewController, track: Cpatefi.AudioTrack) -&gt; ()"
+                  moduleName = "Cpatefi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/romandenisenko/Documents/Cpatefi/Cpatefi/Presenters/PlaybackPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "ADAF3D16-E80D-4239-8EEC-3280FEC3435D - d8e75d353ef21eb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cpatefi.PlaybackPresenter.startPlayback(from: __C.UIViewController, track: Cpatefi.AudioTrack) -&gt; ()"
+                  moduleName = "Cpatefi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/romandenisenko/Documents/Cpatefi/Cpatefi/Presenters/PlaybackPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "2044">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09A8D994-F644-4674-88FB-CAD18F7CE386"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cpatefi/Controllers/Not main)/PlaylistViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

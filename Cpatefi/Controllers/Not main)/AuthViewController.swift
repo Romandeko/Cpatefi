@@ -8,8 +8,12 @@
 import UIKit
 import WebKit
 class AuthViewController: UIViewController,WKNavigationDelegate {
+    
+    // MARK: - Public Properties
+    public var completionHandler : ((Bool) -> Void)?
+    
+    // MARK: - Private Properties
     private let webView : WKWebView = {
-        
         let prefs = WKWebpagePreferences()
         prefs.allowsContentJavaScript = true
         let config = WKWebViewConfiguration()
@@ -19,11 +23,10 @@ class AuthViewController: UIViewController,WKNavigationDelegate {
         
     }()
     
-    public var completionHandler : ((Bool) -> Void)?
-    
+    // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         title = "Sign In"
         view.backgroundColor = .systemBackground
         webView.navigationDelegate = self
@@ -38,6 +41,7 @@ class AuthViewController: UIViewController,WKNavigationDelegate {
         webView.frame = view.bounds
     }
     
+    // MARK: - Extension Methods
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         guard let url = webView.url else { return }
         
