@@ -26,6 +26,7 @@ class LibraryAlbumViewController: UIViewController {
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         view.backgroundColor = .systemBackground
         setUpNoAlbumsView()
         setUpCollectionView()

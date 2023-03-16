@@ -52,6 +52,7 @@ class PlaylistViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         navigationController?.navigationBar.backgroundColor = .clear
         view.backgroundColor = .systemBackground
         setUpCollectionView()
@@ -186,13 +187,24 @@ extension PlaylistViewController : UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let index = indexPath.row
+        guard URL(string: tracks[index].preview_url ?? "") != nil else {
+            let alert = UIAlertController(title: "Sorry", message: "This song isn't available in your country", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(alert,animated : true)
+            return
+        }
         PlayerPresenter.shared.startPlayback(from: self,tracks: tracks,index: index)
     }
 }
 
 extension PlaylistViewController : PlaylistHeaderCollectionReusableViewDelegate{
     func PlaylistHeaderCollectionReusableViewDidTapPlayAll(header: PlaylistHeaderCollectionReusableView) {
-        PlayerPresenter.shared.startPlayback(from: self, tracks: tracks, index: 0)
-        
+        for i in 0..<tracks.count{
+            if tracks[i].preview_url != nil{
+                PlayerPresenter.shared.startPlayback(from: self, tracks: tracks, index: i)
+                break
+            }
+        }
+       
     }
 }

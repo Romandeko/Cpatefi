@@ -48,6 +48,7 @@ class CategoryViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         view.addSubview(collectionView)
         view.backgroundColor = .systemBackground
         setUpCollectionView()

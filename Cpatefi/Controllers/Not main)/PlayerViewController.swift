@@ -37,30 +37,32 @@ class PlayerViewController: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         return imageView
-    }()
+    }()    
 
     private var backgroundView = UIView()
     
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         viewsSetUp()
         controllsView.delegate = self
         configure()
         
         guard let averageColor =  imageView.image?.averageColor?.cgColor else { return  }
         addGradient(withcolor: averageColor)
+      
         
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imageView.frame = CGRect(x: 20, y: view.safeAreaInsets.top + 50, width: view.width - 40, height: view.width/1.2)
         nextImageView.frame = CGRect(x: 520, y: view.safeAreaInsets.top + 50, width: view.width - 40, height: view.width/1.2)
-        controllsView.frame = CGRect(x: 20, y: imageView.bottom + 10, width: view.width - 40, height: view.height-imageView.height-view.safeAreaInsets.top-view.safeAreaInsets.bottom-15)
+        controllsView.frame = CGRect(x: 20, y: imageView.bottom + 50, width: view.width - 40, height: view.height-imageView.height-view.safeAreaInsets.top-view.safeAreaInsets.bottom-15)
     }
     
-    
+   
     // MARK: - Methods
        func viewsSetUp(){
        view.backgroundColor = .systemBackground

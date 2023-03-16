@@ -54,6 +54,7 @@ class AlbumViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         title = album.name
         view.backgroundColor = .systemBackground
         
@@ -182,6 +183,12 @@ extension AlbumViewController : UICollectionViewDelegate,UICollectionViewDataSou
             
             return track
         })
+        guard URL(string: tracks[indexPath.row].preview_url ?? "") != nil else {
+            let alert = UIAlertController(title: "Sorry", message: "This song isn't available in your country", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(alert,animated : true)
+            return
+        }
         PlayerPresenter.shared.startPlayback(from: self,  tracks: tracksWithAlbum, index: indexPath.row)
     }
 }
@@ -194,6 +201,11 @@ extension AlbumViewController : PlaylistHeaderCollectionReusableViewDelegate{
             
             return track
         })
-        PlayerPresenter.shared.startPlayback(from: self, tracks: tracksWithAlbum, index: 0)
+        for i in 0..<tracksWithAlbum.count{
+            if tracksWithAlbum[i].preview_url != nil{
+                PlayerPresenter.shared.startPlayback(from: self, tracks: tracksWithAlbum, index: i)
+                break
+            }
+        }
     }
 }

@@ -24,14 +24,12 @@ class SearchResultSubtitleTableViewCell: UITableViewCell {
         return label
     }()
     
-    
     private let subtitleLabel : UILabel = {
         let label = UILabel()
         label.textColor = .secondaryLabel
         label.numberOfLines = 1
         return label
     }()
-    
     
     private let iconImageView : UIImageView = {
         let imageView = UIImageView()

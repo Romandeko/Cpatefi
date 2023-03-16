@@ -22,14 +22,63 @@ struct PlayerControlsViewModel{
 
 final class PlayerControllsView : UIView {
     
+    // MARK: -   Properties
     weak var delegate : PlayerControllsViewDelegate?
     
-        let timeSlider : UISlider = {
+    let timeSlider : UISlider = {
         let slider = UISlider()
         slider.tintColor = .white
         return slider
     }()
     
+    let playPauseButton : UIButton = {
+        let button = UIButton()
+        button.tintColor = .label
+        button.setImage(UIImage(named: "playMusic"), for: .normal)
+        
+        return button
+    }()
+    
+    let currentTimeLabel : UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.text = "0:00"
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor  = .white
+        return label
+    }()
+    
+    let maxTimeLabel : UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.text = "3:55"
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor  = .white
+        return label
+    }()
+    
+    let shuffleButton : UIButton = {
+        let button = UIButton()
+        button.tintColor = .white
+        let image = UIImage(systemName: "shuffle",withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .regular))
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 8
+        button.setImage(image, for: .normal)
+        
+        return button
+    }()
+    
+    let repeatButton : UIButton = {
+        let button = UIButton()
+        button.tintColor = .white
+        let image = UIImage(systemName: "repeat",withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .regular))
+        button.setImage(image, for: .normal)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 8
+        return button
+    }()
+    
+    // MARK: - Private  Properties
     private let nameLabel : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -47,26 +96,8 @@ final class PlayerControllsView : UIView {
         return label
     }()
     
-     let currentTimeLabel : UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.text = "0:00"
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.textColor  = .white
-        return label
-    }()
-    
-     let maxTimeLabel : UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.text = "3:55"
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.textColor  = .white
-        return label
-    }()
-    
     private let backButton : UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.tintColor = .label
         
         button.setImage(UIImage(named: "prevMusic"), for: .normal)
@@ -74,42 +105,13 @@ final class PlayerControllsView : UIView {
     }()
     
     private let nextButton : UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.tintColor = .label
         button.setImage(UIImage(named: "nextMusic"), for: .normal)
         return button
     }()
     
-     let playPauseButton : UIButton = {
-       let button = UIButton()
-        button.tintColor = .label
-        button.setImage(UIImage(named: "playMusic"), for: .normal)
-        
-        return button
-    }()
-    
     private var isPlaying = true
-    
-     let shuffleButton : UIButton = {
-       let button = UIButton()
-        button.tintColor = .white
-        let image = UIImage(systemName: "shuffle",withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .regular))
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        button.setImage(image, for: .normal)
-        
-        return button
-    }()
-    
-     let repeatButton : UIButton = {
-       let button = UIButton()
-        button.tintColor = .white
-        let image = UIImage(systemName: "repeat",withConfiguration: UIImage.SymbolConfiguration(pointSize: 22, weight: .regular))
-        button.setImage(image, for: .normal)
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
-        return button
-    }()
     
     // MARK: - Override Methods
     override init(frame : CGRect ){
@@ -135,6 +137,9 @@ final class PlayerControllsView : UIView {
         playPauseButton.addTarget(self, action: #selector(didTapPlayPause), for: .touchUpInside)
     }
     
+    required init?(coder:NSCoder){
+        fatalError()
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -171,11 +176,8 @@ final class PlayerControllsView : UIView {
     }
     
     @objc private func didTapPlayPause(){
-        self.isPlaying.toggle()
+        changeButtonImage()
         delegate?.PlayerControllsViewDidTapPlayPauseButton(self)
-        let play = UIImage(named: "playMusic")
-        let pause = UIImage(named: "stopMusic")
-        playPauseButton.setImage(isPlaying ? play : pause, for: .normal)
     }
     
     @objc private func didTapShuffle(){
@@ -208,11 +210,15 @@ final class PlayerControllsView : UIView {
         let value = slider.value
         delegate?.PlayerControllsView(self, didSlideTime: value)
     }
-        required init?(coder:NSCoder){
-            fatalError()
-        }
-    
+   
     // MARK: - Methods
+    func changeButtonImage(){
+        self.isPlaying.toggle()
+        let play = UIImage(named: "playMusic")
+        let pause = UIImage(named: "stopMusic")
+        playPauseButton.setImage(isPlaying ? play : pause, for: .normal)
+    }
+    
     func configure( with viewModel : PlayerControlsViewModel){
         nameLabel.text = viewModel.title
         artistsLabel.text = viewModel.artist

@@ -36,6 +36,7 @@ class SearchViewController: UIViewController,UISearchResultsUpdating, UISearchBa
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         view.backgroundColor = .systemBackground
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -55,7 +56,7 @@ class SearchViewController: UIViewController,UISearchResultsUpdating, UISearchBa
             }
         }
     }
-    
+   
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds

@@ -51,6 +51,7 @@ class WelcomeViewController: UIViewController {
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         title = "Cpatefi"
         view.backgroundColor = .black
         view.addSubview(imageView)

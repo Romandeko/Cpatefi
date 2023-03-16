@@ -311,7 +311,6 @@ final class APICaller {
                     completion(.success(result))
                 }
                 catch{
-                    print("NO")
                     completion(.failure(error))
                 }
             }

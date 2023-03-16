@@ -22,6 +22,7 @@ class LibraryPlaylistsViewController: UIViewController {
       
     // MARK: - Override Methods
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .dark
         super.viewDidLoad()
         collectionView.register(LibraryPlaylistCollectionViewCell.self,forCellWithReuseIdentifier: LibraryPlaylistCollectionViewCell.identitier)
         collectionView.isHidden = true

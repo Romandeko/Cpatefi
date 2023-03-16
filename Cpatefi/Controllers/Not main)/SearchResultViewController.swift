@@ -36,6 +36,7 @@ class SearchResultViewController: UIViewController,UITableViewDelegate,UITableVi
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         view.backgroundColor = .clear
         view.addSubview(tableView)
         tableView.delegate = self

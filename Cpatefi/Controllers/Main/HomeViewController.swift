@@ -52,6 +52,7 @@ class HomeViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector(didTapSettings))
         configureCollectionView()
@@ -283,7 +284,14 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             navigationController?.pushViewController(vc, animated: true)
             
         case .recommendedTracks:
-            PlayerPresenter.shared.startPlayback(from: self,tracks:tracks ,index: 0)
+            guard URL(string: tracks[indexPath.row].preview_url ?? "") != nil else {
+                let alert = UIAlertController(title: "Sorry", message: "This song isn't available in your country", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                present(alert,animated : true)
+                return
+            }
+       
+            PlayerPresenter.shared.startPlayback(from: self,tracks:tracks ,index: indexPath.row)
         }
     }
     

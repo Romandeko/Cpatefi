@@ -23,6 +23,7 @@ class LibraryViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         scrollView.delegate = self
         toggleView.delegate = self
         view.addSubview(scrollView)

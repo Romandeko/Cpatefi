@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     // MARK: - Override Methods
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .dark
         super.viewDidLoad()
         title = "Settings"
         configureModels()

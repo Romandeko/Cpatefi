@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         title = "Profile"
         tableView.delegate = self
         tableView.dataSource = self

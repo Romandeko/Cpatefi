@@ -21,6 +21,7 @@ final class PlayerPresenter {
     
     // MARK: - Weak  Properties
     weak var currentTimer : Timer? = nil
+    weak var delegate: ConfigureSongViewDelegate?
     
     // MARK: - Private  Properties
     private var track : AudioTrack?
@@ -29,7 +30,7 @@ final class PlayerPresenter {
     // MARK: -   Properties
     var index = 0
     var playerVC : PlayerViewController?
-    var player =  AVPlayer()
+    var player : AVPlayer?
     var maxTime = 0
     var currentTime = 0
     var currentTrack : AudioTrack?
@@ -37,8 +38,17 @@ final class PlayerPresenter {
     
     // MARK: - Methods
     func startPlayback(from  viewController: UIViewController,tracks : [AudioTrack],index : Int) {
-        guard let url = URL(string: tracks[index].preview_url ?? "") else { return }
+     
+        NotificationCenter.default.removeObserver(self)
+
+        guard let url = URL(string: tracks[index].preview_url ?? "") else {
+            return
+        }
         
+        guard let imageURL  = URL(string:  tracks[index].album?.images.first?.url ?? "") else { return }
+        delegate?.configureSongView(imageURL, name: tracks[index].name, artist: tracks[index].artists.first?.name ?? "")
+        currentTime = 0
+        stopTimer()
         currentTrack = tracks[index]
         player = AVPlayer(url: url)
         self.tracks = tracks
@@ -54,8 +64,8 @@ final class PlayerPresenter {
             object: nil
         )
         
-        viewController.present(UINavigationController(rootViewController: vc),animated: true ) { [weak self] in
-            self?.player.play()
+        viewController.present(vc,animated: true ) { [weak self] in
+            self?.player?.play()
         }
         
         self.playerVC = vc
@@ -74,9 +84,11 @@ final class PlayerPresenter {
         currentTime = -1
         guard let url = URL(string: tracks[index].preview_url ?? "") else { return }
         player = AVPlayer(url: url)
-        player.play()
+        player?.play()
         currentTrack = tracks[index]
         playerVC?.changeImage()
+        guard let imageURL  = URL(string:  tracks[index].album?.images.first?.url ?? "") else { return }
+        delegate?.configureSongView(imageURL, name: tracks[index].name, artist: tracks[index].artists.first?.name ?? "")
     }
     
     // MARK: - Timers
@@ -100,7 +112,9 @@ final class PlayerPresenter {
             playerVC?.controllsView.currentTimeLabel.text = "0:\(currentTime)"
         }
         playerVC?.controllsView.timeSlider.value = Float(Float(currentTime) / 30.0)
+        delegate?.changeProgress(time: Float(currentTime))
     }
+    
 }
 
 // MARK: - Extensions
@@ -108,14 +122,15 @@ extension PlayerPresenter : PlayerViewControllerDelegate{
     
     func didTapPlayPause() {
         if  player == player {
-            if player.timeControlStatus == .playing{
-                player.pause()
+            if player?.timeControlStatus == .playing{
+                player?.pause()
                 stopTimer()
-            } else  if player.timeControlStatus == .paused{
-                player.play()
+            } else  if player?.timeControlStatus == .paused{
+                player?.play()
                 startTimer()
             }
         }
+        delegate?.changeButtonImage()
     }
     
     func didTapForward() {
@@ -131,11 +146,11 @@ extension PlayerPresenter : PlayerViewControllerDelegate{
         
         if index <= tracks.count - 1 && tracks.count > 1 {
             playerVC?.nextImageURL =  URL(string: tracks[index].album?.images.first?.url ?? "")
-            print(index)
         
         } else  if tracks.count > 1{
             playerVC?.nextImageURL =  URL(string: tracks[0].album?.images.first?.url ?? "")
         } else { playerVC?.nextImageURL =  URL(string: currentTrack?.album?.images.first?.url ?? "")}
+        
         playerVC?.isForward = true
         playerVC?.refreshUI()
         playNext()
@@ -147,7 +162,6 @@ extension PlayerPresenter : PlayerViewControllerDelegate{
         if index == -1{
             index = tracks.count - 1
         }
-
         playerVC?.nextImageURL =  URL(string: tracks[index].album?.images.first?.url ?? "")
         playerVC?.isForward = false
         playerVC?.refreshUI()
@@ -156,7 +170,7 @@ extension PlayerPresenter : PlayerViewControllerDelegate{
     
     func didSlide(_ value: Float) {
         let myTime = CMTime(seconds: Double(value) * 30 , preferredTimescale: 60000)
-        player.seek(to: myTime, toleranceBefore: .zero, toleranceAfter: .zero)
+        player?.seek(to: myTime, toleranceBefore: .zero, toleranceAfter: .zero)
         currentTime = Int(Double(value) * 30)
         if currentTime < 10 {
             playerVC?.controllsView.currentTimeLabel.text = "0:0\(currentTime)"
